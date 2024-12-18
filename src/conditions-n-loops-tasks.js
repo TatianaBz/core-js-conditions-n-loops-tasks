@@ -194,7 +194,7 @@ function convertToRomanNumerals(num) {
  */
 function convertNumberToString(numberStr) {
   let result;
-  let res;
+  const res = [];
   for (let i = 0; i < numberStr.length; i += 1) {
     switch (numberStr[i]) {
       case '.':
@@ -239,7 +239,8 @@ function convertNumberToString(numberStr) {
       default:
         result = 'error';
     }
-    res += `${result}+ ' '`;
+    res[i * 2] = `${result}`;
+    res[i * 2 + 1] = ' ';
   }
   let arrs = [];
   for (let i = 0; i < res.length - 1; i += 1) {
@@ -305,11 +306,12 @@ function getIndexOf(str, letter) {
  *  12345, 6    => false
  */
 function isContainNumber(num, digit) {
-  const num1 = String(num);
+  const num1 = `${num}`;
+  const dig = `${digit}`;
   for (let i = 0; i < num1.length; i += 1) {
-    if (num1[i] !== digit) return false;
+    if (num1[i] === dig) return true;
   }
-  return true;
+  return false;
 }
 
 /**
